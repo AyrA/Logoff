@@ -23,10 +23,6 @@ namespace Logoff
 
         static int Main(string[] args)
         {
-#if DEBUG
-            args = "5|/hide".Split('|');
-#endif
-
             var LowerArgs = args.Select(m => m.ToLower()).ToArray();
             var IsDate = false;
             var HideTimer = false;
