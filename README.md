@@ -6,7 +6,7 @@ This is a replacement and improvement for the logoff command, which is absent in
 
 Command line: `logoff.exe [timeout [/d]] [/hide] [/fake]`
 
-A short command line help is availably by supplying `/?` as argument.
+A short command line help is available by supplying `/?` as argument.
 This will ignore any other arguments present and just display the help.
 
 ### `timeout`
