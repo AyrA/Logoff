@@ -24,7 +24,7 @@ namespace Logoff
         static int Main(string[] args)
         {
 #if DEBUG
-            args = "2030-05-01 12:34:56|/d".Split('|');
+            args = "5|/hide".Split('|');
 #endif
 
             var LowerArgs = args.Select(m => m.ToLower()).ToArray();
@@ -120,7 +120,7 @@ namespace Logoff
 #endif
             if (HideTimer)
             {
-
+                Tools.DetachFromConsole();
             }
             else
             {
@@ -129,8 +129,8 @@ namespace Logoff
             }
             var Pos = new
             {
-                X = Console.CursorLeft,
-                Y = Console.CursorTop
+                X = HideTimer ? 0 : Console.CursorLeft,
+                Y = HideTimer ? 0 : Console.CursorTop
             };
             while (LogoffTime > DateTime.Now)
             {
@@ -169,7 +169,10 @@ namespace Logoff
             }
             Tools.Logoff(DryRun);
 #if DEBUG
-            Console.ReadKey(true);
+            if (!HideTimer)
+            {
+                Console.ReadKey(true);
+            }
 #endif
             return EXIT.SUCCESS;
         }
