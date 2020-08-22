@@ -76,6 +76,12 @@ namespace Logoff
                         break;
                 }
             }
+            if (TimeoutUnparsed == null && IsDate)
+            {
+                Console.Error.WriteLine($"Supplying /D requires you to also supply a date value");
+                Console.Error.WriteLine("Use /? for help");
+                return EXIT.ARG;
+            }
             //If we are still here, all arguments are OK.
             if (IsDate)
             {
