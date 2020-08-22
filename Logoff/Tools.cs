@@ -15,6 +15,8 @@ namespace Logoff
                 Tools.FlagsToString(Tools.FlagsToArray(uFlags)),
                 Tools.FlagsToString(Tools.FlagsToArray(dwReason)));
         }
+        [DllImport("kernel32.dll")]
+        private static extern bool FreeConsole();
 
         /// <summary>
         /// Shutds down the system or logs off the user
@@ -90,6 +92,11 @@ namespace Logoff
             /// <remarks>This is the only valid value for <see cref="ExitFlags.LOGOFF"/></remarks>
             /// </summary>
             NO_REASON = 0
+        }
+
+        public static bool DetachFromConsole()
+        {
+            return FreeConsole();
         }
 
         public static bool Logoff(bool DryRun = false)
